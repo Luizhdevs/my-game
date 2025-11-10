@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rescue</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+            color: #ff6b6b;
+            font-size: 32px;
+        }
+        
+        #gameCanvas {
+            border: 3px solid #ff6b6b;
+            background: #1a1a2e;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+            display: block;
+        }
+        
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 20px;
+            color: #00ff00;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 2px solid #00ff00;
+        }
+        
+        #deaths {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            color: #ff6b6b;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 2px solid #ff6b6b;
+        }
+        
+        #instructions {
+            margin-top: 20px;
+            text-align: center;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .container {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎮 RESCUE </h1>
+    <div class="container">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="info">Fase: <span id="level">1</span>/25</div>
+        <div id="deaths">Mortes: <span id="death-count">0</span></div>
+    </div>
+    <div id="instructions">
+        <p>⬅️ ➡️ = Mover | ESPAÇO = Pular | 🔴 = Evite! | 🟡 = Porta</p>
+    </div>
+
+    <!-- Carregar arquivos de script -->
+    <script src="levels.js"></script>  
+    <script src="game.js"></script>
+</body>
+</html>
