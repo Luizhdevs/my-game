@@ -16,33 +16,6 @@ const LEVELS = {
         door: { x: 1900, y: 480 }
     },
 
-    // 1: {
-    //     // LEVEL 3
-    //     platforms: [
-    //         { x: 0, y: 550, width: 150, height: 50, color: '#808080' },
-    //         { x: 1100, y: 280, width: 100, height: 20 },
-    //         { x: 1350, y: 240, width: 150, height: 20 },
-    //         { x: 1700, y: 200, width: 250, height: 20 },
-
-    //     ],
-    //     icePlatforms: [
-    //         { x: 400, y: 400, width: 400, height: 20 }
-    //     ],
-    //     boosterPlatforms: [
-    //         { x: 150, y: 520, width: 80, height: 20, boostPower: 20 },
-    //         { x: 800, y: 370, width: 80, height: 20, boostPower: 20 }
-    //     ],
-    //     shooterTraps: [
-    //         { x: 600, y: 360, fireRate: 3000, direction: 'left' }
-    //     ],
-    //     spikes: [
-    //         { x: 450, y: 375, visible: true },
-    //         { x: 750, y: 375, visible: true },
-    //         { x: 1400, y: 220, visible: false },
-    //     ],
-    //     door: { x: 1800, y: 130 }
-    // },
-
     2: {
         platforms: [
             // Chão dividido em 3 partes
@@ -276,6 +249,46 @@ const LEVELS = {
             { x: 1300, y: 200, fireRate: 1500, direction: 'left' }
         ],
         door: { x: 1900, y: 80 }
-    }
+    },
+    10: {
+        // Desafio: "A Escalada Arriscada" - Foco em verticalidade e pulos precisos.
+        platforms: [
+            { x: 0, y: 550, width: 200, height: 50, color: '#808080' }, // Chão inicial
+            { x: 1800, y: 100, width: 200, height: 20 }, // Plataforma da porta
+        ],
+        // Primeira subida: trampolim para uma plataforma que cai
+        boosterPlatforms: [
+            { x: 100, y: 520, width: 80, height: 20, boostPower: 22 }
+        ],
+        fallingFloors: [
+            { x: 300, y: 350, width: 100, height: 20 }
+        ],
 
+        // Segunda subida: pulo em um alçapão para outra plataforma
+        trapDoors: [
+            { id: 1, x: 500, y: 350, width: 100, height: 20 }
+        ],
+        triggers: [
+            { targetId: 1, x: 300, y: 320, width: 100, height: 30 } // Gatilho acionado ao pular do chão que cai
+        ],
+        platforms: [ // Adicionando a plataforma de destino após o alçapão
+            { x: 0, y: 550, width: 200, height: 50, color: '#808080' },
+            { x: 700, y: 350, width: 100, height: 20 },
+            { x: 1800, y: 100, width: 200, height: 20 },
+        ],
+
+        // Terceira subida: plataforma móvel com um atirador para complicar
+        movingFallingPlatforms: [
+            { x: 900, y: 250, width: 120, height: 20, endX: 1700, speed: 2.5 }
+        ],
+        shooterTraps: [
+            { x: 1500, y: 210, fireRate: 2200, direction: 'left' }
+        ],
+
+        // Pulo final para a porta
+        spikes: [
+            { x: 1600, y: 215, visible: false } // Um último espinho para um pulo preciso
+        ],
+        door: { x: 1850, y: 30 }
+    },
 };

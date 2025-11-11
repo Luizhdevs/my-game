@@ -35,6 +35,11 @@
             display: block;
         }
         
+        .container {
+            position: relative;
+        }
+
+        /* Estilos do HUD (Heads-Up Display) */
         #info {
             position: absolute;
             top: 20px;
@@ -58,6 +63,19 @@
             border-radius: 5px;
             border: 2px solid #ff6b6b;
         }
+
+        #timer {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            color: #f1c40f;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 2px solid #f1c40f;
+        }
         
         #instructions {
             margin-top: 20px;
@@ -65,9 +83,43 @@
             color: #aaa;
             font-size: 14px;
         }
-        
-        .container {
-            position: relative;
+
+        /* Estilos da Tela de Vitória */
+        #victory-screen {
+            display: none; /* Começa escondido */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        #victory-screen h2 {
+            font-size: 48px;
+            color: #f1c40f;
+            margin-bottom: 20px;
+        }
+        #victory-screen p {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        #victory-screen button {
+            font-size: 20px;
+            padding: 15px 30px;
+            margin-top: 20px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        #victory-screen button:hover {
+            background: #e74c3c;
         }
     </style>
 </head>
@@ -75,8 +127,20 @@
     <h1>🎮 RESCUE </h1>
     <div class="container">
         <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="info">Fase: <span id="level">1</span>/25</div>
+        
+        <!-- HUD -->
+        <div id="info">Fase: <span id="level">1</span></div>
         <div id="deaths">Mortes: <span id="death-count">0</span></div>
+        <div id="timer">Tempo: <span id="time-display">00:00</span></div>
+
+        <!-- Tela de Vitória -->
+        <div id="victory-screen">
+            <h2>VITÓRIA!</h2>
+            <p>Você completou o jogo!</p>
+            <p>Tempo Final: <span id="final-time"></span></p>
+            <p>Total de Mortes: <span id="final-deaths"></span></p>
+            <button onclick="restartGame()">Recomeçar</button>
+        </div>
     </div>
     <div id="instructions">
         <p>⬅️ ➡️ = Mover | ESPAÇO = Pular | 🔴 = Evite! | 🟡 = Porta</p>
